@@ -34,5 +34,3 @@ class Board
             print @s
       end
 end
-b = Board.new
-b.knight
