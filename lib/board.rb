@@ -1,44 +1,38 @@
 require_relative 'pieces'
 module UC
-    white_king = "♔"
-    white_queen = "♕"
-    white_rook = "♖"
-    white_bishop = "♗"
-    white_knight = "♘"
-    white_pawn = "♙"
-    black_king = "♚"
-    black_queen = "♛"
-    black_rook = "♜"
-    black_bishop = "♝"
-    black_knight = "♞"
-    black_pawn = "♟"
-end
-class Square
-    attr_accessor :row, :col, :piece
-    def initialize(row, col, piece = nil)
-        @row = row
-        @col = col
-        @piece = piece
-    end
+    White_king ||= "♔"
+    White_queen ||= "♕"
+    White_rook ||= "♖"
+    White_bishop ||= "♗"
+    White_knight ||= "♘"
+    White_pawn ||= "♙"
+    Black_king ||= "♚"
+    Black_queen ||= "♛"
+    Black_rook ||= "♜"
+    Black_bishop ||= "♝"
+    Black_knight ||= "♞"
+    Black_pawn ||= "♟"
+    space = "\u0020"
+    Space ||= space.encode('utf-8')
 end
 class Board
     include UC
     attr_accessor :board
     def initialize()
-        @board = Array.new(8) { Array.new(8, " ") }
+        @board = Array.new(8) { Array.new(8,Space) }
     end
-    def display()
-        @board.each { |i|
+    def display
+        @board.each { |col|
           print "\n"
-          @a = "+----+----+----+----+----+----+----+----+"
-          puts @a
-          i.each {|n|
-            print "| #{n}  "
+          @s = "+----+----+----+----+----+----+----+----+"
+          puts @s
+          col.each {|row|
+            print "| #{row}  "
             } 
             print "|"}
             print "\n"
-            print @a
-    end 
+            print @s
+      end
 end
 b = Board.new
-b.display
+b.knight
