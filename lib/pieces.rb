@@ -1,119 +1,117 @@
-require_relative 'board'
+require_relative 'unicode'
 class Pawn
+    include UC
     attr_reader :color
-    attr_accessor :pos, :row, :col
+    attr_accessor :pos, :row, :col, :symbol
     def initialize(color,pos)
         @pos = pos
-        @col = pos[0]
-        @row = pos[1]
+        @row = pos[0]
+        @col = pos[1]
         @color = color
         @moved = false
-    end
-    def move(new_pos)
-        if @moved == false && new_pos[1] == (@row + 2)
-            @pos = new_pos
-        elsif new_pos[1] = (@row + 1)
-            @pos = new_pos
-            @moved = true
+        @symbol = nil
+        if @color == "white"
+            @symbol = White_pawn
         else
-            puts "Invalid Move"
+            @symbol = Black_pawn
         end
+    end
+    def valid_moves
+
     end
 end
 
 class Rook
+    include UC
     attr_reader :color
-    attr_accessor :pos, :row, :col
+    attr_accessor :pos, :row, :col, :symbol
     def initialize(color,pos)
         @pos = pos
-        @col = pos[0]
-        @row = pos[1]
+        @row = pos[0]
+        @col = pos[1]
         @color = color
-    end
-    def move(new_pos)
-        if new_pos[0] == @col || new_pos[1] == @row
-            @pos = new_pos
+        @symbol = nil
+        if @color == "white"
+            @symbol = White_rook
         else
-            puts "Invalid Move"
+            @symbol = Black_rook
         end
     end
+    
 end
 
 class Bishop
+    include UC
     attr_reader :color
-    attr_accessor :pos, :row, :col
+    attr_accessor :pos, :row, :col, :symbol
     def initialize(color,pos)
         @pos = pos
-        @col = pos[0]
-        @row = pos[1]
+        @row = pos[0]
+        @col = pos[1]
         @color = color
-    end
-    def move(new_pos)
-        if new_pos[0] != @col && new_pos[1] != @row
-            @pos = new_pos
+        @symbol = nil
+        if @color == "white"
+            @symbol = White_bishop
         else
-            puts "Invalid Move"
+            @symbol = Black_bishop
         end
     end
+    
 end
 
 class Knight
+    include UC
     attr_reader :color
-    attr_accessor :pos, :row, :col
+    attr_accessor :pos, :row, :col, :symbol
     def initialize(color,pos)
         @pos = pos
-        @col = pos[0]
-        @row = pos[1]
+        @row = pos[0]
+        @col = pos[1]
         @color = color
-    end
-    def move(new_pos)
-        if (new_pos[0] == (@col +2) && new_pos[1] == (@row + 1)) ||  (new_pos[0] == (@col - 2) && new_pos[1] == (@row -  1)) ||
-            (new_pos[0] == (@col +2) && new_pos[1] == (@row - 1)) || (new_pos[0] == (@col - 2) && new_pos[1] == (@row + 1)) ||
-            (new_pos[0] == (@col + 1) && new_pos[1] == (@row + 2)) || (new_pos[0] == (@col - 1) && new_pos[1] == (@row + 2)) ||
-            (new_pos[0] == (@col + 1) && new_pos[1] == (@row - 2)) || (new_pos[0] == (@col - 1) && new_pos[1] == (@row - 2))
-            @pos = new_pos
+        @symbol = nil
+        if @color == "white"
+            @symbol = White_knight
         else
-            puts "Invalid Move"
+            @symbol = Black_knight
+        end
     end
+   
 end
 
 class Queen
+    include UC
     attr_reader :color
-    attr_accessor :pos, :row, :col
+    attr_accessor :pos, :row, :col, :symbol
     def initialize(color,pos)
         @pos = pos
-        @col = pos[0]
-        @row = pos[1]
+        @row = pos[0]
+        @col = pos[1]
         @color = color
-    end
-    def move(new_pos)
-        if !(new_pos[0] == (@col + 2) && new_pos[1] == (@row + 1)) ||  !(new_pos[0] == (@col - 2) && new_pos[1] == (@row -  1)) ||
-            !(new_pos[0] == (@col +2) && new_pos[1] == (@row - 1)) || !(new_pos[0] == (@col - 2) && new_pos[1] == (@row + 1)) ||
-            !(new_pos[0] == (@col + 1) && new_pos[1] == (@row + 2)) || !(new_pos[0] == (@col - 1) && new_pos[1] == (@row + 2)) ||
-            !(new_pos[0] == (@col + 1) && new_pos[1] == (@row - 2)) || !(new_pos[0] == (@col - 1) && new_pos[1] == (@row - 2))
-            @pos = new_pos
+        @symbol = nil
+        if @color == "white"
+            @symbol = White_queen
         else
-            puts "Invalid Move"
+            @symbol = Black_queen
         end
     end
+    
 end
 
 class King
+    include UC
     attr_reader :color
-    attr_accessor :pos, :row, :col
+    attr_accessor :pos, :row, :col, :symbol
     def initialize(color,pos)
         @pos = pos
         @col = pos[0]
         @row = pos[1]
         @color = color
-    end
-    def move(new_pos)
-        if (new_pos[0] == (@col + 1)) || (new_pos[0] == (@col - 1)) || (new_pos[1] == (@row + 1)) || (new_pos[1] == (@row - 1)) ||
-            (new_pos[0] == (@col + 1) ** new_pos[1] == (@row + 1)) || (new_pos[0] == (@col - 1) ** new_pos[1] == (@row - 1)) ||
-            (new_pos[0] == (@col - 1) ** new_pos[1] == (@row + 1))  || (new_pos[0] == (@col + 1) ** new_pos[1] == (@row - 1))
-            @pos  = new_pos
+        @symbol = nil
+        if @color == "white"
+            @symbol = White_king
         else
-            puts "Invalid Move"
+            @symbol = Black_king
         end
     end
+    
 end

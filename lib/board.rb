@@ -1,21 +1,5 @@
-#require_relative 'pieces'
-module UC
-  White_king ||= '♔'.freeze
-  White_queen ||= '♕'.freeze
-  White_rook ||= '♖'.freeze
-  White_bishop ||= '♗'.freeze
-  White_knight ||= '♘'.freeze
-  White_pawn ||= '♙'.freeze
-  Black_king ||= '♚'.freeze
-  Black_queen ||= '♛'.freeze
-  Black_rook ||= '♜'.freeze
-  Black_bishop ||= '♝'.freeze
-  Black_knight ||= '♞'.freeze
-  Black_pawn ||= '♟'.freeze
-  space = "\u0020"
-  Space ||= space.encode('utf-8')
-end
-
+require_relative 'pieces'
+require_relative 'unicode'
 class Square
     include UC
     attr_accessor :pos, :piece, :symbol
@@ -39,7 +23,33 @@ class Board
     @board = Array.new(8) { Array.new(8, Space) }
     @board.each_with_index do |row, ir|
         row.each_with_index do |col, ic|
-            @board[ir][ic] = Square.new([ir, ic])
+            if ir == 0 && (ic == 0 || ic == 7)
+                @board[ir][ic] = Square.new([ir,ic], Rook.new("white", [ir,ic]))
+            elsif ir == 0 && (ic == 1 || ic == 6)
+                @board[ir][ic] = Square.new([ir, ic], Knight.new("white", [ir, ic]))
+            elsif ir == 0 && (ic == 2 || ic == 5)
+                @board[ir][ic] = Square.new([ir, ic], Bishop.new("white", [ir, ic]))
+            elsif ir == 0 && ic == 3
+                @board[ir][ic] = Square.new([ir, ic], Queen.new("white", [ir, ic]))
+            elsif ir == 0 && ic == 4
+                @board[ir][ic] = Square.new([ir, ic], King.new("white", [ir, ic]))
+            elsif ir == 1
+                @board[ir][ic] = Square.new([ir, ic], Pawn.new("white", [ir, ic]))
+            elsif ir == 6
+                @board[ir][ic] = Square.new([ir, ic], Pawn.new("black", [ir, ic]))
+            elsif ir == 7 && (ic == 0 || ic == 7)
+                @board[ir][ic] = Square.new([ir, ic], Rook.new("black", [ir, ic]))
+            elsif ir == 7 && (ic == 1 || ic == 6)
+                @board[ir][ic] = Square.new([ir, ic], Knight.new("black", [ir, ic]))
+            elsif ir == 7 && (ic == 2 || ic == 5)
+                @board[ir][ic] = Square.new([ir, ic], Bishop.new("black", [ir, ic]))
+            elsif ir == 7 && ic == 3
+                @board[ir][ic] = Square.new([ir, ic], King.new("black", [ir, ic]))
+            elsif ir ==7 && ic == 4
+                @board[ir][ic] = Square.new([ir, ic], Queen.new("black", [ir, ic]))
+            else
+                @board[ir][ic] = Square.new([ir, ic])
+            end
         end
     end
   end
