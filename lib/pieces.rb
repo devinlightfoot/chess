@@ -14,8 +14,9 @@ class Pawn
             @pos = new_pos
         elsif new_pos[1] = (@row + 1)
             @pos = new_pos
+            @moved = true
         else
-            puts "Invalid move"
+            puts "Invalid Move"
         end
     end
 end
@@ -30,7 +31,11 @@ class Rook
         @color = color
     end
     def move(new_pos)
-
+        if new_pos[0] == @col || new_pos[1] == @row
+            @pos = new_pos
+        else
+            puts "Invalid Move"
+        end
     end
 end
 
@@ -58,7 +63,13 @@ class Knight
         @color = color
     end
     def move(new_pos)
-
+        if (new_pos[0] == (@col +2) && new_pos[1] == (@row + 1)) ||  (new_pos[0] == (@col - 2) && new_pos[1] == (@row -  1)) ||
+            (new_pos[0] == (@col +2) && new_pos[1] == (@row - 1)) || (new_pos[0] == (@col - 2) && new_pos[1] == (@row + 1)) ||
+            (new_pos[0] == (@col + 1) && new_pos[1] == (@row + 2)) || (new_pos[0] == (@col - 1) && new_pos[1] == (@row + 2)) ||
+            (new_pos[0] == (@col + 1) && new_pos[1] == (@row - 2)) || (new_pos[0] == (@col - 1) && new_pos[1] == (@row - 2))
+            @pos = new_pos
+        else
+            puts "Invalid Move"
     end
 end
 
