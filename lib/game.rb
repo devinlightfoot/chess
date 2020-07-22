@@ -4,16 +4,14 @@ $turn = 1
 class Rules
   include UC
   board = Board.new
-  def game_setup
-    
-
-  end
+  def take; end
 
   def check; end
 
   def checkmate; end
 end
 class Input
+    def game_setup; end
   def player_move; end
 end
 class Play
