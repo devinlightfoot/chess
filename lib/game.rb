@@ -71,16 +71,16 @@ class Play
   def initialize
     rules = Rules.new
     #r.set_opponent
-    unless r.checkmate
+    unless rules.checkmate
         if !$turn.even?
             puts "White's move:\n"
-            r.player_move
+            rules.player_move
         else
             puts "Black's move:\n"
-            r.player_move
+            rules.player_move
         end
-        r.b.display
-        r.check
+        rules.b.display
+        rules.check
         $turn += 1
     end
   end
