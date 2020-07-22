@@ -8,10 +8,11 @@ class Square
     @row = pos[0]
     @col = pos[1]
     @piece = piece
-    @symbol = Space
+    @symbol = SPACE
   end
+
   def print_sq
-    @symbol = @piece.nil? ? Space : @piece.symbol
+    @symbol = @piece.nil? ? SPACE : @piece.symbol
     @symbol
   end
 end
@@ -20,7 +21,7 @@ class Board
   include UC
   attr_accessor :board
   def initialize
-    @board = Array.new(8) { Array.new(8, Space) }
+    @board = Array.new(8) { Array.new(8, SPACE) }
     @board.each_with_index do |row, ir|
       row.each_with_index do |_col, ic|
         @board[ir][ic] = if ir == 0 && (ic == 0 || ic == 7)
@@ -53,6 +54,7 @@ class Board
       end
     end
   end
+
   def display
     @board.each do |col|
       print "\n"
@@ -65,5 +67,6 @@ class Board
     end
     print "\n"
     print @s
-    end
+  end
 end
+

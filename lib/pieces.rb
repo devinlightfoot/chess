@@ -1,5 +1,4 @@
 require_relative 'unicode'
-#require_relative 'board'
 class Pawn
   include UC
   attr_reader :color
@@ -12,15 +11,15 @@ class Pawn
     @moved = false
     @symbol = nil
     @symbol = if @color == 'white'
-                White_pawn
+                WHITE_PAWN
               else
-                Black_pawn
+                BLACK_PAWN
               end
   end
   def valid_moves()
     arr = []
     if @moved && @color == "white"
-        arr << [@row + 2. @col]
+        arr << [@row + 2, @col]
     elsif @moved && @color == "black"
         arr << [@row - 2, @col]
     else
@@ -61,9 +60,9 @@ class Rook
     @color = color
     @symbol = nil
     @symbol = if @color == 'white'
-                White_rook
+                WHITE_ROOK
               else
-                Black_rook
+                BLACK_ROOK
               end
   end
   def valid_moves()
@@ -104,9 +103,9 @@ class Bishop
     @color = color
     @symbol = nil
     @symbol = if @color == 'white'
-                White_bishop
+                WHITE_BISHOP
               else
-                Black_bishop
+                BLACK_BISHOP
               end
   end
   def valid_moves()
@@ -147,9 +146,9 @@ class Knight
     @color = color
     @symbol = nil
     @symbol = if @color == 'white'
-                White_knight
+                WHITE_KNIGHT
               else
-                Black_knight
+                BLACK_KNIGHT
               end
   end
   def valid_moves()
@@ -194,9 +193,9 @@ class Queen
     @color = color
     @symbol = nil
     @symbol = if @color == 'white'
-                White_queen
+                WHITE_QUEEN
               else
-                Black_queen
+                BLACK_QUEEN
               end
   end
   def valid_moves()
@@ -245,9 +244,9 @@ class King
     @color = color
     @symbol = nil
     @symbol = if @color == 'white'
-                White_king
+                WHITE_KING
               else
-                Black_king
+                BLACK_KING
               end
   end
   def valid_move()

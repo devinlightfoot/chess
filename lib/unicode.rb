@@ -1,16 +1,16 @@
 module UC
-  White_king ||= '♔'.freeze
-  White_queen ||= '♕'.freeze
-  White_rook ||= '♖'.freeze
-  White_bishop ||= '♗'.freeze
-  White_knight ||= '♘'.freeze
-  White_pawn ||= '♙'.freeze
-  Black_king ||= '♚'.freeze
-  Black_queen ||= '♛'.freeze
-  Black_rook ||= '♜'.freeze
-  Black_bishop ||= '♝'.freeze
-  Black_knight ||= '♞'.freeze
-  Black_pawn ||= '♟'.freeze
+  WHITE_KING ||= '♔'.freeze
+  WHITE_QUEEN ||= '♕'.freeze
+  WHITE_ROOK ||= '♖'.freeze
+  WHITE_BISHOP ||= '♗'.freeze
+  WHITE_KNIGHT ||= '♘'.freeze
+  WHITE_PAWN ||= '♙'.freeze
+  BLACK_KING ||= '♚'.freeze
+  BLACK_QUEEN ||= '♛'.freeze
+  BLACK_ROOK ||= '♜'.freeze
+  BLACK_BISHOP ||= '♝'.freeze
+  BLACK_KNIGHT ||= '♞'.freeze
+  BLACK_PAWN ||= '♟'.freeze
   space = "\u0020"
-  Space ||= space.encode('utf-8')
+  SPACE ||= space.encode('utf-8')
 end
