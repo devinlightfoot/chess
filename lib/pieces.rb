@@ -16,35 +16,37 @@ class Pawn
                 BLACK_PAWN
               end
   end
-  def valid_moves()
+
+  def valid_moves
     arr = []
-    if @moved && @color == "white"
-        arr << [@row + 2, @col]
-    elsif @moved && @color == "black"
-        arr << [@row - 2, @col]
+    if !@moved && @color == 'white'
+      arr << [@row + 2, @col]
+    elsif @moved && @color == 'black'
+      arr << [@row - 2, @col]
     else
-        if @color == "white"
-            if @row + 1 <= 7
-              arr << [@row + 1, @col]
-            else
-                puts "Invalid Move"
-            end
+      if @color == 'white'
+        if @row + 1 <= 7
+          arr << [@row + 1, @col]
         else
-            if @row - 1 >= 0
-              arr << [@row - 1, @col]
-            else
-                puts "Invalid Move"
-            end
+          puts 'Invalid Move'
         end
+      else
+        if @row - 1 >= 0
+          arr << [@row - 1, @col]
+        else
+          puts 'Invalid Move'
+        end
+      end
     end
     arr
   end
+
   def move(new_pos)
-    moves = valid_moves()
+    moves = valid_moves
     if moves.include?(new_pos)
-        @pos = new_pos
+      @pos = new_pos
     else
-        puts "Invalid Move"
+      puts 'Invalid Move'
     end
   end
 end
@@ -65,29 +67,31 @@ class Rook
                 BLACK_ROOK
               end
   end
-  def valid_moves()
+
+  def valid_moves
     arr = []
     shift = 1
     while ((shift + @row) <= 7) || ((@row - shift) >= 0) || ((shift + @col) <= 7) || ((@col - shift) >= 0)
-        if (shift + @row) <= 7
-          arr << [@row + shift, @col]
-        elsif (@row - shift) >= 0
-            arr << [@row - shift, @col]
-        elsif (shift + @col) <= 7
-            arr << [@row, @col + shift]
-        elsif (@col - shift) >= 0
-            arr << [@row, @col - shift]
-        end
-        shift += 1
+      if (shift + @row) <= 7
+        arr << [@row + shift, @col]
+      elsif (@row - shift) >= 0
+        arr << [@row - shift, @col]
+      elsif (shift + @col) <= 7
+        arr << [@row, @col + shift]
+      elsif (@col - shift) >= 0
+        arr << [@row, @col - shift]
+      end
+      shift += 1
     end
     arr
   end
+
   def move(new_pos)
-    moves = valid_moves()
+    moves = valid_moves
     if moves.include?(new_pos)
-        @pos = new_pos
+      @pos = new_pos
     else
-        puts "Invalid Move"
+      puts 'Invalid Move'
     end
   end
 end
@@ -108,29 +112,31 @@ class Bishop
                 BLACK_BISHOP
               end
   end
-  def valid_moves()
+
+  def valid_moves
     arr = []
     shift = 1
     while @row + shift <= 7 || @row - shift >= 0 || @col + shift <= 7 || @col - shift >= 0
-        if @row + shift <= 7 && @col + shift <= 7
-            arr << [@row + shift, @col + shift]
-        elsif @row + shift <= 7 && @col - shift >= 0
-            arr << [@row + shift, @col - shift]
-        elsif @row - shift >= 0 && @col + shift <= 7
-            arr << [@row -shift, @col + shift]
-        elsif @row - shift >= 0 && @col - shift >= 0
-            arr << [@row - shift, @col - shift]
-        end
-        shift += 1
+      if @row + shift <= 7 && @col + shift <= 7
+        arr << [@row + shift, @col + shift]
+      elsif @row + shift <= 7 && @col - shift >= 0
+        arr << [@row + shift, @col - shift]
+      elsif @row - shift >= 0 && @col + shift <= 7
+        arr << [@row - shift, @col + shift]
+      elsif @row - shift >= 0 && @col - shift >= 0
+        arr << [@row - shift, @col - shift]
+      end
+      shift += 1
     end
     arr
   end
+
   def move(new_pos)
-    moves = valid_moves()
+    moves = valid_moves
     if moves.include?(new_pos)
-        @pos = new_pos
+      @pos = new_pos
     else
-        puts "Invalid Move"
+      puts 'Invalid Move'
     end
   end
 end
@@ -151,33 +157,35 @@ class Knight
                 BLACK_KNIGHT
               end
   end
-  def valid_moves()
+
+  def valid_moves
     arr = []
     if @row + 2 <= 7 && @col + 1 <= 7
-        arr << [@row + 2, @col + 1]
-    elsif @row +2 <= 7 && @col - 1 >= 0
-        arr << [@row + 2, @col - 1]
+      arr << [@row + 2, @col + 1]
+    elsif @row + 2 <= 7 && @col - 1 >= 0
+      arr << [@row + 2, @col - 1]
     elsif @row - 2 >= 0 && @col + 1 <= 7
-        arr << [@row -2, @col + 1]
+      arr << [@row - 2, @col + 1]
     elsif @row - 2 >= 0 && @col - 1 >= 0
-        arr << [@row - 2, @col - 1]
+      arr << [@row - 2, @col - 1]
     elsif @row + 1 <= 7 && @col + 2 <= 7
-        arr << [@row + 1, @col + 2]
+      arr << [@row + 1, @col + 2]
     elsif @row + 1 <= 7 && @col - 2 >= 0
-        arr << [@row + 1, @col - 2]
+      arr << [@row + 1, @col - 2]
     elsif @row - 1 >= 0 && @col + 2 <= 7
-        arr << [@row - 1, @col + 2]
+      arr << [@row - 1, @col + 2]
     elsif @row - 1 >= 0 && @col - 2 >= 0
-        arr << [@row - 1, @col - 2]
+      arr << [@row - 1, @col - 2]
     end
     arr
   end
+
   def move(new_pos)
-    moves = valid_moves()
+    moves = valid_moves
     if moves.include?(new_pos)
-        @pos = new_pos
+      @pos = new_pos
     else
-        puts "Invalid Move"
+      puts 'Invalid Move'
     end
   end
 end
@@ -198,37 +206,39 @@ class Queen
                 BLACK_QUEEN
               end
   end
-  def valid_moves()
+
+  def valid_moves
     arr = []
     shift = 1
     while ((shift + @row) <= 7) || ((@row - shift) >= 0) || ((shift + @col) <= 7) || ((@col - shift) >= 0)
-        if (shift + @row) <= 7
-          arr << [@row + shift, @col]
-        elsif (@row - shift) >= 0
-            arr << [@row - shift, @col]
-        elsif (shift + @col) <= 7
-            arr << [@row, @col + shift]
-        elsif (@col - shift) >= 0
-            arr << [@row, @col - shift]
-        elsif @row + shift <= 7 && @col + shift <= 7
-            arr << [@row + shift, @col + shift]
-        elsif @row + shift <= 7 && @col - shift >= 0
-            arr << [@row + shift, @col - shift]
-        elsif @row - shift >= 0 && @col + shift <= 7
-            arr << [@row -shift, @col + shift]
-        elsif @row - shift >= 0 && @col - shift >= 0
-            arr << [@row - shift, @col - shift]
-        end
-        shift += 1
+      if (shift + @row) <= 7
+        arr << [@row + shift, @col]
+      elsif (@row - shift) >= 0
+        arr << [@row - shift, @col]
+      elsif (shift + @col) <= 7
+        arr << [@row, @col + shift]
+      elsif (@col - shift) >= 0
+        arr << [@row, @col - shift]
+      elsif @row + shift <= 7 && @col + shift <= 7
+        arr << [@row + shift, @col + shift]
+      elsif @row + shift <= 7 && @col - shift >= 0
+        arr << [@row + shift, @col - shift]
+      elsif @row - shift >= 0 && @col + shift <= 7
+        arr << [@row - shift, @col + shift]
+      elsif @row - shift >= 0 && @col - shift >= 0
+        arr << [@row - shift, @col - shift]
+      end
+      shift += 1
     end
     arr
   end
+
   def move(new_pos)
-    moves = valid_moves()
+    moves = valid_moves
     if moves.include?(new_pos)
-        @pos = new_pos
+      @pos = new_pos
     else
-        puts "Invalid Move"
+      puts 'Invalid Move'
     end
   end
 end
@@ -249,33 +259,35 @@ class King
                 BLACK_KING
               end
   end
-  def valid_move()
+
+  def valid_move
     arr = []
     if @row + 1 <= 7
-        arr << [@row + 1, @col]
+      arr << [@row + 1, @col]
     elsif @row - 1 >= 0
-        arr << [@row - 1, @col]
+      arr << [@row - 1, @col]
     elsif @col + 1 <= 7
-        arr << [@row, @col + 1]
+      arr << [@row, @col + 1]
     elsif @col - 1 >= 0
-        arr << [@row, @col - 1]
+      arr << [@row, @col - 1]
     elsif @row + 1 <= 7 && @col + 1 <= 7
-        arr << [@row + 1, @col + 1]
+      arr << [@row + 1, @col + 1]
     elsif @row + 1 <= 7 && @col - 1 >= 0
-        arr << [@row + 1, @col - 1]
+      arr << [@row + 1, @col - 1]
     elsif @row - 1 >= 0 && @col + 1 <= 7
-        arr << [@row - 1, @col + 1]
+      arr << [@row - 1, @col + 1]
     elsif @row - 1 >= 0 && @col - 1 >= 0
-        arr << [@row - 1, @col - 1]
+      arr << [@row - 1, @col - 1]
     end
     arr
   end
+
   def move(new_pos)
-    moves = valid_moves()
+    moves = valid_moves
     if moves.include?(new_pos)
-        @pos = new_pos
+      @pos = new_pos
     else
-        puts "Invalid Move"
+      puts 'Invalid Move'
     end
   end
 end

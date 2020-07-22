@@ -1,2 +1,2 @@
-#AI for chess
-#will work on when done debugging game functionality
+# AI for chess
+# will work on when done debugging game functionality
